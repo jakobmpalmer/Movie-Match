@@ -1,0 +1,16 @@
+.genreButtons {
+    display: flex;   
+    justify-content: space-around;
+    padding: 5px;    
+}
+
+.genreButton {
+    color: white;
+    // background-color: purple;
+    padding: 10px;
+    // margin: 15px;
+    &.active { 
+        background-color: #007bff; // Example active state background color
+        color: white;             // Example active state text color
+      }
+}

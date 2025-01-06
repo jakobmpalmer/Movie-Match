@@ -1,0 +1,21 @@
+.header {
+    // background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center; 
+    display: flex; // Enable flexbox layout
+    justify-content: space-around; // Distribute items evenly
+    align-items: center; // Vertically center items
+  }
+  
+  .headerTitle {
+    font-size: 36px;
+    // color: #333;
+  }
+  
+  .headerItem {
+    // Add any specific styles for the header items if needed
+    // color: black;
+    background-image: linear-gradient(to top, #000000, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
