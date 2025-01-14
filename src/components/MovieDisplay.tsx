@@ -1,12 +1,11 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from 'react';
-import { GenreKey } from './GenreSelector/GenreSelector'; // Import GenreKey
+import { GenreKey } from './GenreSelector/GenreSelector';
 
 interface Movie {
   Title: string;
   Year: string;
   Poster: string;
-  // Add other properties as needed from the OMDB API
 }
 
 interface MovieDisplayProps {
@@ -29,11 +28,10 @@ const MovieDisplay: React.FC<MovieDisplayProps> = ({ selectedGenres }) => {
       setLoading(true);
       setError(null);
 
-      // Use a random selected genre for the API call
       const randomGenre =
         selectedGenres[Math.floor(Math.random() * selectedGenres.length)];
 
-      const apiKey = process.env.NEXT_PUBLIC_OMDB_API_KEY; // Replace with your actual API key
+      const apiKey = process.env.NEXT_PUBLIC_OMDB_API_KEY;
       const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${randomGenre}&type=movie`;
 
       try {
@@ -41,9 +39,8 @@ const MovieDisplay: React.FC<MovieDisplayProps> = ({ selectedGenres }) => {
         const data = await response.json();
 
         if (data.Response === 'True') {
-          // Fetch more details for the selected movie
           if (data.Search && data.Search.length > 0) {
-            const imdbID = data.Search[0].imdbID; // Get the IMDb ID of the first movie
+            const imdbID = data.Search[0].imdbID;
             const detailsUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`;
             const detailsResponse = await fetch(detailsUrl);
             const detailsData = await detailsResponse.json();
@@ -81,7 +78,6 @@ const MovieDisplay: React.FC<MovieDisplayProps> = ({ selectedGenres }) => {
           {movie.Poster !== 'N/A' && (
             <img src={movie.Poster} alt={movie.Title} />
           )}
-          {/* Display other movie details here */}
         </div>
       )}
     </div>

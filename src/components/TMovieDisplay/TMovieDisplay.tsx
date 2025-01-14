@@ -1,13 +1,14 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { getGenreName } from '../../utils/genreUtils';
+import Movie from '@/models/Movie';
 
-interface Movie {
-  title: string;
-  release_date: string;
-  poster_path: string;
-  genre_ids: number[];
-}
+// interface Movie {
+//   title: string;
+//   release_date: string;
+//   poster_path: string;
+//   genre_ids: number[];
+// }
 
 interface MovieDisplayProps {
   selectedGenres: number[]; 
@@ -32,7 +33,6 @@ const MovieDisplay: React.FC<MovieDisplayProps> = ({ selectedGenres, setSearched
 
       const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY; 
 
-      // Join the selectedGenres array into a comma-separated string
       const genresString = selectedGenres.join(','); 
   
       const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genresString}`; 
@@ -49,12 +49,23 @@ const MovieDisplay: React.FC<MovieDisplayProps> = ({ selectedGenres, setSearched
             ? `https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`
             : 'N/A';
 
-          setMovie({
-            title: selectedMovie.title,
-            release_date: selectedMovie.release_date,
-            poster_path: posterPath,
-            genre_ids: selectedMovie.genre_ids,
-          });
+            setMovie({
+              title: selectedMovie.title,
+              release_date: selectedMovie.release_date,
+              poster_path: posterPath,
+              genre_ids: selectedMovie.genre_ids,
+              adult: selectedMovie.adult,
+              backdrop_path: selectedMovie.backdrop_path,
+              id: selectedMovie.id,
+              original_language: selectedMovie.original_language,
+              original_title: selectedMovie.original_title,
+              overview: selectedMovie.overview,
+              popularity: selectedMovie.popularity,
+              video: selectedMovie.video,
+              vote_average: selectedMovie.vote_average,
+              vote_count: selectedMovie.vote_count,
+            });
+            
           setSearchedMovie(selectedMovie); 
         } else {
           setError('No movies found for this genre.');
@@ -77,25 +88,38 @@ const MovieDisplay: React.FC<MovieDisplayProps> = ({ selectedGenres, setSearched
     <div>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-
+    <div>
       {movie && (
         <div>
-          <h2>{movie.title}</h2>
-          <p>Year: {movie.release_date.slice(0, 4)}</p>
-          {movie.poster_path !== 'N/A' && (
-            <img src={movie.poster_path} alt={movie.title} />
-          )}
-
-          <div>
-            <h3>Genres:</h3>
-            <ul>
-              {movie.genre_ids.map((genreId) => (
-                <li key={genreId}>{getGenreName(genreId)}</li>
-              ))}
-            </ul>
-          </div>
+            <div>
+              <h2>{movie.title}</h2>
+              <p>Year: {movie.release_date ? movie.release_date.slice(0, 4) : 'N/A'}</p>            
+              {movie.poster_path !== 'N/A' && (
+                <img
+                  src={movie.poster_path || '/images/placeholder.png'}
+                  alt={movie.title}
+                  style={{
+                    display: 'block',
+                    margin: '0 auto',
+                    maxWidth: '100%',
+                    height: 'auto',
+                    borderRadius: '8px'
+                  }}
+                />
+              )}
+            </div>
+            {/* <div>
+              <h3>Genres:</h3>
+              <ul>
+                {movie.genre_ids.map((genreId: number) => (
+                  <li key={genreId}>{getGenreName(genreId)}</li>
+                ))}
+              </ul>
+            </div> */}
         </div>
       )}
+    </div>
+
     </div>
   );
 };

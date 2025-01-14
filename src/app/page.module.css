@@ -1,18 +1,41 @@
 .page {
-  background-color: #fff; /* Set background color */
-  min-height: 100vh; /* Ensure full viewport height */
-  font-family: sans-serif; /* Choose a default font */
-
-  /* Add padding or margin if needed */
+  min-height: 100vh;
+  font-family: sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   .page {
-    background-color: #000; /* Dark mode background */
   }
 }
 
-/* Optional: Add any global styles for specific elements */
 body {
-  margin: 0; /* Reset default body margin */
+  margin: 0;
+}
+
+.footer {
+  background-color: var(--secondary);
+  color: var(--text-primary);
+  padding: 20px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  border-top: 2px solid var(--highlight);
+  margin-top: 30px;
+}
+
+.footer a {
+  color: var(--text-primary);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: var(--primary);
+}
+
+@media (max-width: 600px) {
+  .footer {
+    font-size: 0.8rem;
+  }
 }

@@ -7,7 +7,7 @@ import { Genres, GenreKey } from '../../components/GenreSelector/GenreSelector';
 import Header from '@/components/Header/Header';
 import Movie from '../../models/Movie'
 
-const HomePage = () => {
+const MatchPage = () => {
 //   const [selectedGenres, setSelectedGenres] = useState<GenreKey[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]); 
   const [showMovie, setShowMovie] = useState<boolean>(false);
@@ -21,13 +21,11 @@ const HomePage = () => {
   return (
     <div style={{maxWidth: '80%', margin: '0px auto'}}>        
         {!showMovie && (
-          <div style={{ width: '50%', margin: '0px auto' }}>
             <GenreSelection onGenresSelected={handleGenresSelected} />
-          </div>
         )}
         {showMovie && <TMovieDisplay selectedGenres={selectedGenres} setSearchedMovie={setSearchedMovie}/>}
     </div>
   );
 };
 
-export default HomePage;
+export default MatchPage;

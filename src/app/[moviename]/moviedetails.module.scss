@@ -1,0 +1,32 @@
+.movieDetailsContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .movieDetailsContainer h1 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 20px;
+  }
+  
+  .moviePoster {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  .movieDetailsContainer p {
+    margin: 10px 0;
+    color: var(--text-primary);
+  }
+  
+  .movieDetailsContainer strong {
+    color: var(--text-secondary);
+  }
+  

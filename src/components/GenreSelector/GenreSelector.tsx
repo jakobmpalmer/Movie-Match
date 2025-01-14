@@ -51,30 +51,29 @@ const GenreSelector: React.FC<GenreSelectionProps> = ({ onGenresSelected }) => {
 
   return (
     <div>
-      Choose your genre:
+      <h2>Choose your genre:</h2>
       <div className={styles.genreButtons}>
         {availableGenres.map((genre) => (
-          <button 
-          className={`${styles.genreButton} ${movieGenre[genre as GenreKey] ? styles.active : ''}`} 
-          key={genre} 
-          onClick={() => handleGenreClick(genre as GenreKey)}>
-            {genre} 
+          <button
+            key={genre}
+            className={`${styles.genreButton} ${
+              movieGenre[genre as GenreKey] ? styles.active : ''
+            }`}
+            onClick={() => handleGenreClick(genre as GenreKey)}
+          >
+            {genre}
           </button>
         ))}
       </div>
-      {/* <div>
-        <h3>Selected Genres:</h3>
-        <ul>
-          {(Object.keys(movieGenre) as GenreKey[]).map((genre) => (
-            <li key={genre}>
-              {genre}: {movieGenre[genre] ? "Yes" : "No"}
-            </li>
-          ))}
-        </ul>
-      </div> */}
-      <button onClick={handleSubmit}>Submit</button>
+  
+      <div className={styles.buttonContainer}>
+        <button className={styles.submitButton} onClick={handleSubmit}>
+          Submit
+        </button>
+      </div>
     </div>
   );
+  
 };
 
 export default GenreSelector;

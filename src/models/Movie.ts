@@ -1,9 +1,7 @@
-// src/models/Movie.ts
-
-export interface Movie {
+export default interface Movie {
     adult: boolean;
     backdrop_path: string | null; 
-    genre_ids: number;
+    genre_ids: number[];
     id: number;
     original_language: string;
     original_title: string;

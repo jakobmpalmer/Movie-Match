@@ -1,16 +1,60 @@
 .genreButtons {
-    display: flex;   
+    display: flex;
     justify-content: space-around;
-    padding: 5px;    
-}
-
-.genreButton {
-    color: white;
-    // background-color: purple;
+    flex-wrap: wrap;
+    gap: 10px; 
     padding: 10px;
-    // margin: 15px;
-    &.active { 
-        background-color: #007bff; // Example active state background color
-        color: white;             // Example active state text color
-      }
-}
+  }
+  
+  .genreButton {
+    color: white;
+    background-color: #6c757d; 
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 6px;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .genreButton.active {
+    background-color: #007bff; 
+    color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .genreButton:hover {
+    background-color: #5a6268;
+    transform: scale(1.05); 
+  }
+  
+  .submitButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .submitButton:hover {
+    background-color: #218838; 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .submitButton:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px; 
+  }
+  
