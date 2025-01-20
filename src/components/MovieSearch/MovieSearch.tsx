@@ -26,6 +26,7 @@ const SearchMovies = () => {
 
       if (data.results) {
         setResults(data.results);
+        console.log('setting results:', data.results)
       } else {
         setError("No results found.");
       }
@@ -69,6 +70,7 @@ const SearchMovies = () => {
             />
             <div className={styles.resultDetails}>
               <h3>{movie.title}</h3>
+                {movie.adult && <p>ADULT</p>}
               <p>{movie.release_date || "N/A"}</p>
               <p>{movie.overview || "No description available."}</p>
             </div>

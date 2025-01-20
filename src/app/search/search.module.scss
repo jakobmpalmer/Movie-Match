@@ -16,8 +16,9 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  // margin-top: 20px;
+  // margin-bottom: 20px;
+  height: 100%;
   padding: 20px;
   background-color: var(--highlight);
   border-radius: 8px;
@@ -29,15 +30,37 @@
 }
 
 .movieDetailRow strong {
-  color: var(--text-secondary);
+  // color: var(--text-secondary);
+  color: black;
   font-weight: bold;
   grid-column: 1;
   text-align: left;
 }
 
 .movieDetailRow span {
-  color: var(--text-primary);
+  // color: var(--text-primary);
+  color: black;
   font-weight: normal;
   grid-column: 2;
   text-align: right;
+}
+
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.flexContainer {
+  display: flex;
+  gap: 20px; /* Optional spacing between items */
+  align-items: stretch; /* Make items equal in height */
+}
+
+.flexItem {
+  flex: 1; /* Make each child take up equal space */
+  display: flex;
+  flex-direction: column; /* Ensure internal content is stacked vertically */
 }

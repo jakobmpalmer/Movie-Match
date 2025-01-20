@@ -10,13 +10,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #3d3d3d;
     --foreground: #ededed;
-    --primary: #3A5A40;
-    --secondary: #FFC107;
+    --primary: #00b7ff;
+    --secondary: #00ccff;
     --text-primary: #E8E8E8;
     --text-secondary: #B3B3B3;
-    --highlight: #9E2A2B;
+    --highlight: #ffffff;
   }
 }
 
@@ -43,6 +43,10 @@
 html,
 body {
   max-width: 100vw;
+  height: 100%;
+  margin: 0; 
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -89,4 +93,23 @@ a:hover {
   html {
     color-scheme: dark;
   }
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full screen height */
+}
+
+.main-content {
+  flex-grow: 1; /* Make the main content fill the available space */
+  padding: 20px; /* Optional padding */
+}
+
+footer {
+  background-color: var(--background); /* Customize footer background */
+  color: var(--text-primary); /* Footer text color */
+  padding: 10px;
+  text-align: center;
+  margin-top: auto; /* Push footer to the bottom */
 }

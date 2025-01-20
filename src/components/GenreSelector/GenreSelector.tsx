@@ -1,71 +1,58 @@
+/*
+Author: Jakob M Paulson-Palmer
+The purpose of this class is to provide an interface to select genres provided by the tmdb. 
+*/
+
 "use client";
 import React, { useState } from "react";
-import styles from './GenreSelector.module.scss'
-import { getGenreId } from '../../utils/genreUtils'; 
+import styles from "./GenreSelector.module.scss";
+import GenreTag from "../GenreTag/GenreTag";
+import { genreMap, getGenreId } from "../../utils/genreUtils";
 
-const availableGenres = ["Action", "Adventure", "Mystery", "Comedy", 'Romance', 'Animation', 'Crime', 'Drama', 'Fantasy', 'Horror', 'Science Fiction']; 
-
-export interface Genres {
-  Action: boolean;
-  Adventure: boolean;
-  Mystery: boolean;
-  Comedy: boolean;
-  Romance: boolean; 
-  Animation: boolean; 
-  Crime: boolean;
-  Drama: boolean;
-  Fantasy: boolean;
-  Horror: boolean;
-  'Science Fiction': boolean; 
-}
-
-export type GenreKey = keyof Genres;
+const availableGenres = Object.keys(genreMap);
 
 interface GenreSelectionProps {
-  onGenresSelected: (genres: number[]) => void; // Changed to number[]
+  onGenresSelected: (genres: number[]) => void;
 }
 
 const GenreSelector: React.FC<GenreSelectionProps> = ({ onGenresSelected }) => {
-  const [movieGenre, setMovieGenre] = useState<Genres>(
+  const [movieGenre, setMovieGenre] = useState<{ [key: string]: boolean }>(
     availableGenres.reduce((obj, genre) => {
-      obj[genre as GenreKey] = false; 
+      obj[genre] = false;
       return obj;
-    }, {} as Genres)
+    }, {} as { [key: string]: boolean })
   );
 
-  const handleGenreClick = (genre: GenreKey) => {
+  const handleGenreClick = (genreName: string) => {
     setMovieGenre((prevGenres) => ({
       ...prevGenres,
-      [genre]: !prevGenres[genre],
+      [genreName]: !prevGenres[genreName],
     }));
   };
 
   const handleSubmit = () => {
-    const selectedGenreIds = (Object.keys(movieGenre) as GenreKey[])
-      .filter((genre) => movieGenre[genre]) 
-      .map(genreName => getGenreId(genreName)) 
-      .filter(id => id !== undefined) as number[]; 
+    const selectedGenreIds = availableGenres
+      .filter((genreName) => movieGenre[genreName])
+      .map((genreName) => getGenreId(genreName))
+      .filter((id) => id !== undefined) as number[];
 
-    onGenresSelected(selectedGenreIds); 
+    onGenresSelected(selectedGenreIds);
   };
 
   return (
     <div>
       <h2>Choose your genre:</h2>
       <div className={styles.genreButtons}>
-        {availableGenres.map((genre) => (
-          <button
-            key={genre}
-            className={`${styles.genreButton} ${
-              movieGenre[genre as GenreKey] ? styles.active : ''
-            }`}
-            onClick={() => handleGenreClick(genre as GenreKey)}
-          >
-            {genre}
-          </button>
+        {availableGenres.map((genreName) => (
+          <GenreTag
+            key={genreName}
+            genre={genreName}
+            isActive={movieGenre[genreName]}
+            onClick={() => handleGenreClick(genreName)}
+          />
         ))}
       </div>
-  
+
       <div className={styles.buttonContainer}>
         <button className={styles.submitButton} onClick={handleSubmit}>
           Submit
@@ -73,7 +60,6 @@ const GenreSelector: React.FC<GenreSelectionProps> = ({ onGenresSelected }) => {
       </div>
     </div>
   );
-  
 };
 
 export default GenreSelector;

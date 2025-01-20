@@ -28,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Header />
-        <ThemeSwitcher />
-        {children}
-        <Footer />
+        <div className="layout-container">
+          <Header />
+          <ThemeSwitcher />
+          <main className="main-content">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

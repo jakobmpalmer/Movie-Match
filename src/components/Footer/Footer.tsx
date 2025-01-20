@@ -6,37 +6,37 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <p>&copy; 2025 Movie Match. All Rights Reserved.</p>
+        {/* <p>&copy; 2025 Movie Match. All Rights Reserved.</p> */}
         <div className={styles.footerLinks}>
           <a
-            href="https://nextjs.org/learn"
+            href="https://www.linkedin.com/in/jakob-m-palmer/"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.footerLink}
           >
             <Image
               aria-hidden
-              src="/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
+              src="/images/LinkedIn-Logos/LI-In-Bug.png"
+              alt="Linkedin icon"
+              width={28}
+              height={24}
             />
-            Learn
+            Linkedin
           </a>
           <a
-            href="https://vercel.com/templates"
+            href="https://github.com/jakobmpalmer"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.footerLink}
           >
             <Image
               aria-hidden
-              src="/window.svg"
-              alt="Window icon"
-              width={16}
-              height={16}
+             src="/images/github-mark/github-mark/github-mark.svg"
+              alt="Github icon"
+              width={24}
+              height={24}
             />
-            Templates
+            Github
           </a>
           <a
             href="https://nextjs.org"
@@ -51,7 +51,7 @@ const Footer = () => {
               width={16}
               height={16}
             />
-            Next.js
+            Resume
           </a>
         </div>
       </div>
